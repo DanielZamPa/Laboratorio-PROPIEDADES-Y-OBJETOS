@@ -1,13 +1,13 @@
 const prompt = require("prompt-sync")();
+
 function carrito (){
-    this.productos = [[],[]]
+    this.productos = []
     this.total = 0;
     this.agregarProducto = function(nombre, precio){
         console.log("Producto ", nombre, " agregado");        
-        this.productos[0].push(nombre);
-        this.productos[1].push(precio);        
+        this.productos.push(nombre);        
         this.total += precio;           
-        console.log(this.total);        
+        console.log("Total productos agregados: "+this.total);        
     }
     this.calcularDescuento=function(){
         
@@ -16,8 +16,8 @@ function carrito (){
 
 let carrito1 = new carrito();
 let fin = false;
-let error = false;
 while(fin!=true){
+    let error = false;
     console.log("Agrege los productos deseados de la siguiente lista: ");
     console.log("1. Chaqueta Chevignon\n2. Jeans \n3. Camisa Polo");
     let nombre = prompt("R: ");
@@ -34,15 +34,18 @@ while(fin!=true){
         console.log("Error selccion de producto");        
     }
     do{
-        console.log("¿Quiere agregar más productos?");
-        ingreso = prompt("1. Seguir comprando\n2. Salir\nR: ");
+        console.log("\n¿Quiere agregar más productos?");
+        console.log("1. Seguir comprando\n2. Salir" )
+        ingreso = prompt("R: ");
         if(ingreso == 2){
-            console.log("Saliendo.");        
+            console.log("Saliendo.");
+            console.clear();
             fin = true;
             error = false;            
             break           
         }
-        else if(ingreso==1){
+        else if(ingreso==1){        
+            console.clear();
             error = false;
             continue
         }
